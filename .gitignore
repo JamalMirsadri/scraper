@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Frontend build output
+frontend/dist/
+
 # Runtime database (regenerated on start)
 backend/data.sqlite
 backend/data.sqlite-wal

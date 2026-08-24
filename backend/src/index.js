@@ -192,6 +192,17 @@ app.delete('/api/output', (req, res) => {
   res.json({ deleted: true });
 });
 
+// Serve the built React frontend (production). Must come after all /api routes.
+const FRONTEND_DIST = path.join(__dirname, '..', '..', 'frontend', 'dist');
+app.use(express.static(FRONTEND_DIST));
+
+// SPA fallback — any non-API route returns the app shell.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(FRONTEND_DIST, 'index.html'), (err) => {
+    if (err) res.status(404).send('Frontend not built. Run `npm run build` in frontend/');
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Scraper Manager backend listening on http://localhost:${PORT}`);
 });
