@@ -1,0 +1,17 @@
+{
+  "name": "scraper-manager-backend",
+  "version": "1.0.0",
+  "description": "Local Scraper Manager backend",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "better-sqlite3": "^12.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-cron": "^3.0.3"
+  }
+}

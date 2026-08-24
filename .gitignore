@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Runtime database (regenerated on start)
+backend/data.sqlite
+backend/data.sqlite-wal
+backend/data.sqlite-shm
+
+# Generated scraper output (CSV/XLSX/JSON reports)
+output/
+
+# Logs & OS files
+*.log
+.DS_Store
+Thumbs.db
