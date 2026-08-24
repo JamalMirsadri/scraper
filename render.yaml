@@ -1,8 +1,6 @@
 services:
   - type: web
     name: scraper-manager
-    runtime: node
-    rootDir: backend
-    buildCommand: npm install && cd ../frontend && npm install && npm run build
-    startCommand: npm start
+    runtime: docker
+    dockerfilePath: ./Dockerfile
     plan: free

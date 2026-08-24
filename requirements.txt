@@ -1,2 +1,2 @@
 curl_cffi
-playwright
+playwright==1.61.0
