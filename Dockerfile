@@ -7,6 +7,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get install -y --no-install-recommends nodejs \
     && rm -rf /var/lib/apt/lists/*
 
+# Xvfb provides a virtual display so scrapers using headless=False can launch Chromium.
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb \
+    && rm -rf /var/lib/apt/lists/* \
+    && printf '#!/bin/sh\nexec xvfb-run -a python3 "$@"\n' > /usr/local/bin/python-xvfb \
+    && chmod +x /usr/local/bin/python-xvfb
+
 WORKDIR /app
 
 # Python dependencies (Playwright browsers are already in the base image).
@@ -24,7 +30,7 @@ RUN cd frontend && npm install && npm run build
 # Scrapers (Python scripts).
 COPY scrapers ./scrapers
 
-ENV PYTHON_BIN=python3
+ENV PYTHON_BIN=/usr/local/bin/python-xvfb
 ENV PORT=10000
 
 WORKDIR /app/backend
