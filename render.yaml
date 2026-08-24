@@ -3,4 +3,5 @@ services:
     name: scraper-manager
     runtime: docker
     dockerfilePath: ./Dockerfile
+    region: frankfurt
     plan: free
